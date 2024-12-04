@@ -252,10 +252,11 @@ export function observeAccordionRows(accordionId) {
 
     const allRows = tbody.querySelectorAll("tr");
     const firstCellValues = getFirstCellValues(allRows);
-    console.log(
-      `아코디언: ${accordionId}, 첫 번째 셀 값들 (첫 행 제외):`,
-      firstCellValues
-    );
+    // 디버깅 로그
+    // console.log(
+    //   `아코디언: ${accordionId}, 첫 번째 셀 값들 (첫 행 제외):`,
+    //   firstCellValues
+    // );
 
     // 패키지 처리
     const packages = [package1, package2, package3, package4];
@@ -382,8 +383,7 @@ export function observeAccordionRows(accordionId) {
         console.log(`아코디언 ${accordion.id}의 tbody가 비어 있습니다.`);
       } else {
         console.log(
-          `아코디언 ${accordion.id}의 tbody에 ${
-            tbody ? tbody.children.length : 0
+          `아코디언 ${accordion.id}의 tbody에 ${tbody ? tbody.children.length : 0
           }개의 행이 있습니다.`
         );
         console.log(tbody.children);
