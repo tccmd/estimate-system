@@ -1,0 +1,81 @@
+/* 행이 추가되어도 고정된 사이즈를 갖기 위함 */
+#quoteTable {
+  table-layout: fixed;
+}
+
+/* 아코디언 안의 테이블의 테이블 헤드 가운데 정렬 */
+#quoteTable th {
+  text-align: center;
+}
+
+/* 고정된 사이즈 */
+#quoteTable th:nth-child(1),
+#quoteTable td:nth-child(1) {
+  width: 30%;
+}
+
+#quoteTable th:nth-child(3),
+#quoteTable td:nth-child(3) {
+  width: 21%;
+}
+
+#quoteTable th:nth-child(4),
+#quoteTable td:nth-child(4) {
+  width: 21%;
+}
+
+#quoteTable th:nth-child(5),
+#quoteTable td:nth-child(5) {
+  width: 20%;
+}
+
+/* 가격 오른쪽 정렬 */
+#quoteTable td:nth-child(3),
+#quoteTable td:nth-child(4) {
+  text-align: right;
+}
+
+/* 테이블 안의 셀렉트 태그 셀 채우기 */
+#quoteTable select {
+  width: 100%;
+}
+
+/* 테이블 안의 인풋 태그 셀 채우기 */
+#quoteTable input {
+  width: 100%;
+  border: none;
+  padding-right: 5px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+/* 스크린샷일 때 아코디언 테이블 안의 가로선이 나오지 않아서 추가 */
+#quoteTable {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#quoteTable th,
+#quoteTable td {
+  border: 1px solid #dee2e6;
+  padding: 8px;
+}
+
+/* Placeholder 중앙 정렬 */
+.center-placeholder::placeholder {
+  text-align: center;
+}
+
+/* 드롭다운 클릭 컬러 변경 */
+.dropdown-item:active, .dropdown-item:focus {
+  background-color: rgba(var(--bs-body-color-rgb), 0.06); /* 원하는 색상으로 변경 */
+  color: black; /* 텍스트 색상 변경 (필요한 경우) */
+}
+
+/* 설정 아코디언의 버튼 제거 */
+.accordion-button.custom-accordion-icon::after {
+  display: none; /* 아이콘을 숨기기 */ 
+}
+.accordion-button.custom-accordion-icon:hover {
+  cursor: default; /* 버튼처럼 클릭할 수 없도록 설정 */
+}
