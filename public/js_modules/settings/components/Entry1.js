@@ -1,8 +1,10 @@
+import { estimateDatainit } from "../../common/data.js";
 import { addButtonSVG } from "../../components/SVGs.js";
 import { showToast } from "../../components/toast.js";
 import { modalBody } from "../settings.js";
 import createButton from "./Btn.js";
 import createCategory from "./Category.js";
+import createIptGroup from "./IptGroup.js";
 
 export default function createEnty1s(entry1, value1) {
   const entry1Card = document.createElement('div');
@@ -20,8 +22,15 @@ export default function createEnty1s(entry1, value1) {
   cardHeader.appendChild(cardHeaderText);
   cardHeader.appendChild(createButton(addButtonSVG, () => {
     // 카테고리 생성 및 추가
-    const newCategory = createCategory({})[0];
+    const [newCategory, accordionBody] = createCategory({});
     cardBody.appendChild(newCategory);
+
+    // entry1이 packages일 경우 기본 인풋 세팅
+    if (entry1 === "packages") {
+      for (const [key, value] of Object.entries(estimateDatainit.packageInit)) {
+        accordionBody.appendChild(createIptGroup(key, value));
+      }
+    }
 
     // 새로 추가된 카테고리로 스크롤 이동
     newCategory.scrollIntoView({ behavior: "smooth", block: "center" });

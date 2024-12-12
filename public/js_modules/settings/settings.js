@@ -3,7 +3,7 @@
 import { estimateData } from "../common/data.js";
 import createCategory from "./components/Category.js";
 import createEnty1s from "./components/Entry1.js";
-import createIptGroup from "./components/IptGroup.js";
+import createIptGroup, { createAutoComleteInpt } from "./components/IptGroup.js";
 import collectInputData from "./data/collectInputData.js";
 import updateServerData from "./data/updateServerData.js";
 
@@ -17,6 +17,8 @@ export default function settingsInit() {
 
 // 모달 바디 UI 셋팅
 function settingsModalBody() {
+
+  // modalBody.appendChild(createAutoComleteInpt());
 
   // 1. 데이터 로그
   // console.log(estimateData);
@@ -33,7 +35,7 @@ function settingsModalBody() {
 
       // 3. 데이터 로그
       // console.log(`  2. entry2: ${entry2} : ${value2}`);
-      const [category, accordionBody] = createCategory(entry2, value1);
+      const [category, accordionBody] = createCategory(entry2, entry1);
       entry1Card.appendChild(category);
       // 3. 옵션 생성
       for (const [key, value] of Object.entries(value2)) {

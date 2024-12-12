@@ -1,9 +1,10 @@
+import { estimateDatainit } from "../../common/data.js";
 import { addButtonSVG, minusButtonSVG } from "../../components/SVGs.js";
 import { showToast } from "../../components/toast.js";
 import createButton from "./Btn.js";
 import createIptGroup from "./IptGroup.js";
 
-export default function createCategory(entry2) {
+export default function createCategory(entry2, entry1) {
 
   const entry2Accordion = document.createElement('div');
   const accordionItem = document.createElement('div');
@@ -34,7 +35,7 @@ export default function createCategory(entry2) {
   // btnE.setAttribute('aria-controls', "true");
   accordionCollaps.id = collapseId;
   accordionCollaps.setAttribute('data-bs-parent', `#${entry2Accordion.id}`);
-  iptE.placeholder = JSON.stringify(entry2) !== "{}" ? entry2 : "example";
+  iptE.value = JSON.stringify(entry2) !== "{}" ? entry2 : "example";
 
   entry2Accordion.appendChild(accordionItem);
   accordionItem.appendChild(h2E);

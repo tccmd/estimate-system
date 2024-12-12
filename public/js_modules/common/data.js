@@ -1,11 +1,14 @@
 // data.js
 
-// export const estimateData = {
-//   categories: {
-//   },
-//   packages: {
-//   },
-// };
+export const estimateDatainit = {
+  categories: {
+  },
+  packageInit: {
+    "묶음 옵션들": [],
+    "할인율": 0,
+    "가격": 0,
+  },
+};
 
 export const estimateData = {
   categories: {

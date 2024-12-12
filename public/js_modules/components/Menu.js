@@ -26,9 +26,7 @@ function addDropdownToHeader() {
   const dropdownE = document.createElement('div');
   dropdownE.classList.add('dropdown');
 
-  const menuButton = createButton(menuButtonSVG, () => {
-    console.log('werwer')
-  });
+  const menuButton = createButton(menuButtonSVG, () => { });
   menuButton.setAttribute('data-bs-toggle', "dropdown");
   menuButton.setAttribute('aria-expanded', "false");
   menuButton.classList.add('text-bg-dark', 'border-0');
