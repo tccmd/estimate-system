@@ -3,7 +3,7 @@
 import { estimateData } from "../common/data.js";
 import createCategory from "./components/Category.js";
 import createEnty1s from "./components/Entry1.js";
-import createIptGroup, { createAutoComleteInpt } from "./components/IptGroup.js";
+import createIptGroup from "./components/IptGroup.js";
 import collectInputData from "./data/collectInputData.js";
 import updateServerData from "./data/updateServerData.js";
 

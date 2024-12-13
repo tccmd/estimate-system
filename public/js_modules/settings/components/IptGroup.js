@@ -1,5 +1,5 @@
 import { minusButtonSVG } from "../..//components/SVGs.js";
-import collectInputData from "../data/collectInputData.js";
+import { createAutoComleteIpt } from "../../components/AutoComplete.js";
 import createSwitch from "./Switch.js";
 
 export default function createIptGroup(key, value, entry2) {
@@ -45,7 +45,7 @@ export default function createIptGroup(key, value, entry2) {
     // } else if (Object.keys(estimateDatainit.packageInit).some(k => key.includes(k))) {
     // key가 estimateDatainit.packageInit의 키 중 하나를 포함하는지 확인
   } else if (key === "묶음 옵션들") {
-    input2 = createAutoComleteInpt();
+    input2 = createAutoComleteIpt();
   } else {
     input2 = document.createElement("input");
     input2.classList.add("form-control");
@@ -71,91 +71,4 @@ export default function createIptGroup(key, value, entry2) {
   inputGroup.appendChild(deleteButton);
 
   return inputGroup;
-}
-
-
-var suggestions = [
-  'JavaScript',
-  'Java',
-  'Python',
-  'HTML',
-  'CSS',
-  'React',
-  'Vue',
-  'Node.js',
-  'Bootstrap',
-  'Sass',
-  'TypeScript',
-  'Angular'
-];
-
-export function OutoCompletIpt() {
-
-}
-
-export function createAutoComleteInpt() {
-  // input 생성
-  const searchContainer = document.createElement('div');
-  searchContainer.id = 'search-container';
-  const searchInput = document.createElement('input');
-  searchInput.type = 'text';
-  searchInput.classList.add('form-control');
-  searchInput.placeholder = '검색어를 입력하세요';
-  searchContainer.appendChild(searchInput);
-
-  // 포커스가 있을 때
-  searchInput.addEventListener('focus', () => {
-    console.log('Input has focus');
-    // 여기에 포커스가 있을 때 실행할 조건을 넣으면 됩니다.
-    var data = collectInputData();
-    console.log(data)
-  });
-
-
-  // 자동완성 기능
-  searchInput.addEventListener('input', function () {
-    const query = this.value.toLowerCase();
-    closeSuggestions(); // 기존 추천 검색어 목록을 닫습니다.
-
-    if (!query) return; // 입력이 없으면 추천 검색어를 표시하지 않습니다.
-
-    const filteredSuggestions = suggestions.filter(item =>
-      item.toLowerCase().includes(query)
-    );
-
-    if (filteredSuggestions.length === 0) return; // 결과가 없으면 종료
-
-    // 추천 검색어 목록을 만듭니다.
-    const suggestionList = document.createElement('div');
-    suggestionList.classList.add('autocomplete-items');
-    suggestionList.style.position = 'absolute';
-    suggestionList.style.border = '1px solid #d4d4d4';
-    suggestionList.style.maxHeight = '200px';
-    suggestionList.style.overflowY = 'auto';
-    suggestionList.style.backgroundColor = 'white';
-    suggestionList.style.zIndex = '99';
-
-    filteredSuggestions.forEach(item => {
-      const div = document.createElement('div');
-      div.innerHTML = item;
-      div.style.padding = '10px';
-      div.style.cursor = 'pointer';
-      div.addEventListener('click', () => {
-        searchInput.value = item; // 선택한 검색어를 입력창에 채웁니다.
-        closeSuggestions(); // 추천 목록을 닫습니다.
-      });
-      suggestionList.appendChild(div);
-    });
-
-    searchContainer.appendChild(suggestionList); // 추천 검색어를 표시합니다.
-  });
-
-  return searchContainer;
-}
-
-function closeSuggestions() {
-  const items = document.querySelector('.autocomplete-items');
-  if (items) {
-    items.parentNode.removeChild(items);
-  }
 }

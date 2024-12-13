@@ -67,34 +67,38 @@
 }
 
 /* 드롭다운 클릭 컬러 변경 */
-.dropdown-item:active, .dropdown-item:focus {
-  background-color: rgba(var(--bs-body-color-rgb), 0.06); /* 원하는 색상으로 변경 */
-  color: black; /* 텍스트 색상 변경 (필요한 경우) */
+.dropdown-item:active,
+.dropdown-item:focus {
+  background-color: rgba(var(--bs-body-color-rgb), 0.06);
+  /* 원하는 색상으로 변경 */
+  color: black;
+  /* 텍스트 색상 변경 (필요한 경우) */
 }
 
 /* 설정 아코디언의 버튼 제거 */
 .accordion-button.custom-accordion-icon::after {
-  display: none; /* 아이콘을 숨기기 */ 
+  display: none;
+  /* 아이콘을 숨기기 */
 }
+
 .accordion-button.custom-accordion-icon:hover {
-  cursor: default; /* 버튼처럼 클릭할 수 없도록 설정 */
+  cursor: default;
+  /* 버튼처럼 클릭할 수 없도록 설정 */
 }
 
-/* autoCompleteInput */
-/* .autocomplete-items {
+/* .input-container {
+  position: relative;
+}
+
+.input-container input {
+  padding-left: 30px;
+}
+
+.input-container::before {
+  content: 'Prefix';
   position: absolute;
-  border: 1px solid #d4d4d4;
-  max-height: 200px;
-  overflow-y: auto;
-  background-color: white;
-  z-index: 99;
-}
-
-.autocomplete-items div {
-  padding: 10px;
-  cursor: pointer;
-}
-
-.autocomplete-items div:hover {
-  background-color: #e9e9e9;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: gray;
 } */
