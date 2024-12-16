@@ -22,7 +22,7 @@ export default function createEnty1s(entry1, value1) {
   cardHeader.appendChild(cardHeaderText);
   cardHeader.appendChild(createButton(addButtonSVG, () => {
     // 카테고리 생성 및 추가
-    const [newCategory, accordionBody] = createCategory({});
+    const [newCategory, accordionBody] = createCategory({}, entry1);
     cardBody.appendChild(newCategory);
 
     // entry1이 packages일 경우 기본 인풋 세팅
@@ -39,7 +39,7 @@ export default function createEnty1s(entry1, value1) {
     showToast({
       message2: "새 카테고리가 추가되었습니다.",
     });
-  }));
+  }, entry1 === "categories" ? "카테고리 추가" : "묶음 추가"));
   entry1Card.appendChild(cardHeader);
   entry1Card.appendChild(cardBody);
   modalBody.appendChild(entry1Card);

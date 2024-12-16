@@ -102,3 +102,21 @@
   transform: translateY(-50%);
   color: gray;
 } */
+
+.intput-readonly:focus {
+  outline: none;
+  /* 기본 outline 제거 */
+  box-shadow: none;
+  /* 기본 box-shadow 제거 */
+  border-color: #dee2e6;
+  /* 테두리 색상 초기화 (원하는 색으로 설정 가능) */
+}
+
+.svg-color {
+  color: rgba(var(--bs-dark-rgb), var(--bs-bg-opacity)) !important;
+}
+
+/* .custom-tooltip {
+  --bs-tooltip-color: black;
+  --bs-tooltip-bg: white;
+} */

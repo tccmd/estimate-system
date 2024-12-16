@@ -3,13 +3,15 @@ export default function collectInputData() {
 
   // 초기 데이터 객체 생성
   const data = {};
+  const keys = [];
 
   // 카드 영역을 선택
   const cards = document.querySelectorAll('.modal-body .card');
   cards.forEach((card) => {
-    // 카드의 텍스트 내용을 키로 설정
-    const cardKey = card.textContent.trim();
+    // 카드 헤더의 텍스트 내용을 키로 설정
+    const cardKey = card.querySelector('.card-header').textContent.trim();
     data[cardKey] = {};
+    // console.log(cardKey);
 
     // 카드 내부의 아코디언 항목 선택
     const accordionItems = card.querySelectorAll('.accordion .accordion-item');
@@ -34,18 +36,28 @@ export default function collectInputData() {
         } else if (inputs[1].tagName === "DIV") {
           const switchInput = inputs[1].querySelector('div > input');
           value = switchInput.checked;
+          if (switchInput.type === "text") {
+            // console.log(`${key}: ${switchInput}, ${switchInput.value}`)
+            value = switchInput.value;
+          }
         } else {
           value = inputs[1].placeholder;
         }
+        // if (inputs[2]) console.log(inputs[2]);
 
         // 데이터를 구성
         data[cardKey][itemKey][key] = value;
+        // 키 모음 구성
+        if (cardKey === "categories" && key !== "필수 카테고리 여부" && key !== "--------------------------") {
+          keys.push(key);
+        }
       });
     });
   });
 
   // 최종 데이터 출력
   console.log(data);
+  console.log(keys);
 
-  return data;
+  return [data, keys];
 }

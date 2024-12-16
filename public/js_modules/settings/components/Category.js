@@ -41,9 +41,11 @@ export default function createCategory(entry2, entry1) {
   accordionItem.appendChild(h2E);
   h2E.appendChild(btnE);
   btnE.appendChild(iptE);
-  btnE.appendChild(createButton(addButtonSVG, () => {
-    accordionBody.appendChild(createIptGroup("", "", entry2));
-  }));
+  if (entry1 === "categories") {
+    btnE.appendChild(createButton(addButtonSVG, () => {
+      accordionBody.appendChild(createIptGroup("", "", entry2, entry1));
+    }, "옵션 추가"));
+  }
   btnE.appendChild(createButton(minusButtonSVG, () => {
     // entry2Accordion을 부모 요소에서 삭제
     entry2Accordion.remove();
@@ -52,7 +54,7 @@ export default function createCategory(entry2, entry1) {
       message1: `${iptE.value ? iptE.value : iptE.placeholder}`,
       message2: "카테고리가 삭제되었습니다."
     });
-  }));
+  }, "카테고리 삭제"));
   accordionItem.appendChild(accordionCollaps);
   accordionCollaps.appendChild(accordionBody);
 

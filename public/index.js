@@ -6,7 +6,6 @@ import settingsInit from "./js_modules/settings/settings.js";
 import menuInit from "./js_modules/components/Menu.js";
 import { createMainAccordion } from "./js_modules/components/accordion/MainAccordion.js";
 import createToast from "./js_modules/components/toast.js";
-import { createAutoComleteIpt } from "./js_modules/components/AutoComplete.js";
 import createIptGroup from "./js_modules/settings/components/IptGroup.js";
 
 // 페이지 로드 시 데이터 함수, 초기화 함수 호출
@@ -16,7 +15,11 @@ window.onload = function () {
 
 
   document.getElementById('auto').appendChild(createIptGroup("묶음 옵션들", "value", "packages"));
-  // document.getElementById('auto').appendChild(createAutoComleteIpt());
+  // document.getElementById('auto').appendChild(createAutocompleteInput());
+
+  // 툴팁 활성화
+  const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+  const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
 };
 
 // 초기화 함수

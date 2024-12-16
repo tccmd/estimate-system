@@ -41,7 +41,7 @@ function settingsModalBody() {
       for (const [key, value] of Object.entries(value2)) {
 
         // input-group을 modalBody에 추가
-        accordionBody.appendChild(createIptGroup(key, value, entry2));
+        accordionBody.appendChild(createIptGroup(key, value, entry2, entry1));
 
       }
     }
@@ -50,7 +50,6 @@ function settingsModalBody() {
   // submit()
   const settingsSubmitButton = document.getElementById('settings-submit-button');
   settingsSubmitButton.addEventListener('click', () => {
-    collectInputData();
     updateServerData();
     window.location.reload();
   });
