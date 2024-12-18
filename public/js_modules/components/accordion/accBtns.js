@@ -1,8 +1,8 @@
 import { clearAccordionTable, removeAccordion } from "./accBtnFunctions.js";
 import selectRequiredOptionsOnce from "./selectRequiredOptionsOnce.js";
 
-export function createAllSelectBtn(entry2) {
-  if (!entry2.includes("package")) {
+export function createAllSelectBtn(entry1, entry2) {
+  if (entry1 !== "packages") {
     var selectButton = document.createElement("button");
     selectButton.type = "button";
     selectButton.className = "btn btn-outline-primary me-2";

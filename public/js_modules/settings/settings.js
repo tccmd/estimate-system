@@ -1,10 +1,10 @@
 // public/js_modules/settings.js
 
 import { estimateData } from "../common/data.js";
+import { showToast } from "../components/toast.js";
 import createCategory from "./components/Category.js";
 import createEnty1s from "./components/Entry1.js";
 import createIptGroup from "./components/IptGroup.js";
-import collectInputData from "./data/collectInputData.js";
 import updateServerData from "./data/updateServerData.js";
 
 // 모달 바디
@@ -18,7 +18,12 @@ export default function settingsInit() {
 // 모달 바디 UI 셋팅
 function settingsModalBody() {
 
-  // modalBody.appendChild(createAutoComleteInpt());
+  console.log("estimateData:", estimateData);
+
+  if (!estimateData || typeof estimateData !== "object") {
+    console.error("Invalid estimateData: data is null or undefined");
+    return;
+  }
 
   // 1. 데이터 로그
   // console.log(estimateData);
@@ -50,7 +55,23 @@ function settingsModalBody() {
   // submit()
   const settingsSubmitButton = document.getElementById('settings-submit-button');
   settingsSubmitButton.addEventListener('click', () => {
-    updateServerData();
+    updateServerData().then((res) => {
+      // console.log(res);
+      if (res.status === 200) {
+        // Toast 메시지 표시
+        showToast({
+          message2: "저장되었습니다.",
+        });
+
+        // Bootstrap 모달 닫기
+        const modalElement = document.getElementById('staticBackdrop');
+        const modalInstance = bootstrap.Modal.getInstance(modalElement);
+
+        if (modalInstance) {
+          modalInstance.hide(); // 모달 닫기
+        }
+      }
+    });
     window.location.reload();
   });
 }

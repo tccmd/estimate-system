@@ -2,11 +2,12 @@ import { createAllSelectBtn, createClearBtn } from "./accBtns.js";
 import create1stRow from "./create1stRow.js";
 import createAccordion from "./createAccordion.js";
 import createTable from "./createTable.js";
+import observeAccordionRows from "./observeAccordionRows.js";
 
-export function createMainAccordion(entry1, entry2, value2) {
+export default function createMainAccordion(entry1, entry2, value2) {
 
   // 아코디언 생성
-  var [parentDiv, bodyDiv] = createAccordion(entry2);
+  var [parentDiv, bodyDiv] = createAccordion(entry2, value2);
 
   // 테이블 생성
   var [table, tbody] = createTable();
@@ -19,7 +20,7 @@ export function createMainAccordion(entry1, entry2, value2) {
   table.appendChild(tbody);
 
   // "모두 추가" 버튼 생성
-  var selectButton = createAllSelectBtn(entry2);
+  var selectButton = createAllSelectBtn(entry1, entry2);
 
   // "행 모두 지우기" 버튼 생성
   var clearButton = createClearBtn(tbody, entry1, entry2);
@@ -35,5 +36,9 @@ export function createMainAccordion(entry1, entry2, value2) {
   var accordionDiv = document.getElementById("accordionPanels");
   accordionDiv.appendChild(parentDiv);
 
-  return tbody;
+  // 리스터 부착 - 선택옵션이거나 entry1이 "packages"인 경우
+  if (value2["required"] === false || entry1 === "packages") {
+    observeAccordionRows(entry1, entry2, parentDiv);
+  }
+  return [parentDiv, tbody];
 }

@@ -74,9 +74,6 @@ export function showToast({ message1, message2, header }) {
   } else {
     bodyElement.textContent = message2;
   }
-  // const maxLangth = 15;
-  // let slicedText = (message1 || "").length > maxLangth ? message1.slice(0, 15) + "..." : message1;
-  // bodyElement.textContent = slicedText + message2 || defaultMessage;  // 본문 텍스트 변경
 
   // Bootstrap Toast 인스턴스 활성화 및 표시
   const toastInstance = new bootstrap.Toast(toast);

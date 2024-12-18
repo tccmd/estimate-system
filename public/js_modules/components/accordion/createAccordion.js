@@ -1,4 +1,4 @@
-export default function createAccordion(entry2) {
+export default function createAccordion(entry2, value2) {
   // 부모 요소 생성
   var parentDiv = document.createElement("div");
   parentDiv.className = "accordion-item"; // d-none';
@@ -20,7 +20,12 @@ export default function createAccordion(entry2) {
   button.setAttribute("aria-expanded", "true");
   button.setAttribute("aria-controls", "panelsStayOpen-collapse" + entry2);
 
-  button.innerText = entry2;
+  if (value2) {
+    button.innerText = value2.required === true ? entry2 + " (필수 사항)" : entry2;
+  } else {
+    button.innerText = entry2;
+  }
+
 
   headerDiv.appendChild(button);
 

@@ -87,7 +87,7 @@ export function createAutocompleteInput() {
     }
   }
 
-  return container;
+  return [container, inputField];
 }
 
 // 유틸리티 함수

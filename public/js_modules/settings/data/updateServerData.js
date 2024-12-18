@@ -1,5 +1,7 @@
+import collectInputData from "./collectInputData.js";
+
 export default async function updateServerData() {
-  const data = collectInputData();
+  const data = collectInputData()[0];
 
   try {
     const response = await fetch('/api/update-options', {
@@ -12,7 +14,8 @@ export default async function updateServerData() {
 
     if (response.ok) {
       const result = await response.json();
-      console.log('Data uploaded successfully:', result.fileUrl);
+      // console.log('Data uploaded successfully:', result.fileUrl);
+      return response;
     } else {
       console.error('Failed to update data:', await response.json());
     }

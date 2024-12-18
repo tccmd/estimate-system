@@ -42,7 +42,9 @@ export default function createIptGroup(key, value, entry2, entry1) {
     input2.classList.add('form-control');
     input2.appendChild(createSwitch(`${entry2}SwitchId`, value));
   } else if (key === "묶음 옵션들") {
-    input2 = createAutocompleteInput();
+    const [auto, autoInput] = createAutocompleteInput();
+    input2 = auto;
+    autoInput.value = value;
   } else if (key === "--------------------------") {
     input2 = createReadonlyInput();
     input1.classList.add("intput-readonly");
@@ -96,14 +98,3 @@ function handlePriceInput(input, key) {
   // 커서를 항상 뒤로 유지
   input.setSelectionRange(cursorPosition, cursorPosition);
 }
-
-// // 삭제 버튼 생성
-// function createDeleteButton(inputGroup) {
-//   const deleteButton = document.createElement("button");
-//   deleteButton.classList.add("btn");
-//   deleteButton.innerHTML = minusButtonSVG;
-//   deleteButton.addEventListener("click", () => {
-//     inputGroup.remove(); // inputGroup(옵션 및 버튼) 삭제
-//   });
-//   return deleteButton;
-// }

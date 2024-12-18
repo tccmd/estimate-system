@@ -4,22 +4,15 @@ import initializeDate from "./js_modules/common/dateModule.js";
 import dataInit, { estimateData } from "./js_modules/common/data.js";
 import settingsInit from "./js_modules/settings/settings.js";
 import menuInit from "./js_modules/components/Menu.js";
-import { createMainAccordion } from "./js_modules/components/accordion/MainAccordion.js";
+import createMainAccordion from "./js_modules/components/accordion/MainAccordion.js";
 import createToast from "./js_modules/components/toast.js";
-import createIptGroup from "./js_modules/settings/components/IptGroup.js";
+import selectRequiredOptionsOnce from "./js_modules/components/accordion/selectRequiredOptionsOnce.js";
 
 // 페이지 로드 시 데이터 함수, 초기화 함수 호출
 window.onload = function () {
-  dataInit();
-  initialize();
-
-
-  document.getElementById('auto').appendChild(createIptGroup("묶음 옵션들", "value", "packages"));
-  // document.getElementById('auto').appendChild(createAutocompleteInput());
-
-  // 툴팁 활성화
-  const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
-  const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+  dataInit().then(() => {
+    initialize();
+  });
 };
 
 // 초기화 함수
@@ -47,8 +40,14 @@ async function initialize() {
 
       // 3. 옵션 생성
       for (const [key, value] of Object.entries(value2)) {
-
+        if (value === true) {
+          selectRequiredOptionsOnce(entry2);
+        }
       }
     }
   }
+
+  // 툴팁 활성화
+  const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+  const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
 }
