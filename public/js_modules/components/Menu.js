@@ -1,3 +1,4 @@
+import screenshot from "../screenShot/screenShot.js";
 import createButton from "../settings/components/Btn.js";
 import { imageButtonSVG, menuButtonSVG, settingButtonSVG } from "./SVGs.js";
 
@@ -72,7 +73,9 @@ function addDropdownToHeader() {
     }
 
     aE.onclick = () => {
-
+      if (key === "screenshot") {
+        screenshot();
+      }
     };
     liE.appendChild(aE);
 

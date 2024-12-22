@@ -13,10 +13,10 @@ export default function createMainAccordion(entry1, entry2, value2) {
   var [table, tbody] = createTable();
 
   // 첫 번째 행 생성
-  var row = create1stRow(entry2, value2);
+  if (entry1 === "categories") var row = create1stRow(entry2, value2);
 
   // 테이블에 첫 번째 행 추가
-  tbody.appendChild(row);
+  if (entry1 === "categories") tbody.appendChild(row);
   table.appendChild(tbody);
 
   // "모두 추가" 버튼 생성
@@ -37,8 +37,8 @@ export default function createMainAccordion(entry1, entry2, value2) {
   accordionDiv.appendChild(parentDiv);
 
   // 리스터 부착 - 선택옵션이거나 entry1이 "packages"인 경우
-  if (value2["required"] === false || entry1 === "packages") {
-    observeAccordionRows(entry1, entry2, parentDiv);
+  if (value2["필수 카테고리 여부"] === false || entry1 === "packages") {
+    observeAccordionRows(entry1, entry2, parentDiv, tbody);
   }
   return [parentDiv, tbody];
 }

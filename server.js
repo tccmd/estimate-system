@@ -2,7 +2,7 @@
 
 import express from 'express';
 import dotenv from 'dotenv';
-import { downloadJsonData, uploadJsonData } from './public/js_modules/settings/data/S3sdk.js';
+import { downloadJsonData, uploadJsonData } from './S3sdk.js';
 
 // 환경 변수 로드
 dotenv.config();
@@ -66,3 +66,5 @@ app.listen(PORT, () => {
       `);
   }
 });
+
+export default app;

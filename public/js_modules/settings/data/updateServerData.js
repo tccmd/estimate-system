@@ -12,6 +12,8 @@ export default async function updateServerData() {
       body: JSON.stringify(data),
     });
 
+    console.log("response", response)
+
     if (response.ok) {
       const result = await response.json();
       // console.log('Data uploaded successfully:', result.fileUrl);

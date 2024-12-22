@@ -33,11 +33,11 @@ export default function createIptGroup(key, value, entry2, entry1) {
     input1.textContent = key;
     input1.appendChild(infoIcon);
   }
-  input1.value = key === "required" ? "필수 카테고리 여부" : (key || "example");
+  input1.value = key === "필수 카테고리 여부" ? "필수 카테고리 여부" : (key || "example");
 
   // 3. 가격 input 생성 또는 추가 입력 설정
   let input2;
-  if (key === "required") {
+  if (key === "필수 카테고리 여부") {
     input2 = document.createElement('div');
     input2.classList.add('form-control');
     input2.appendChild(createSwitch(`${entry2}SwitchId`, value));
@@ -82,7 +82,7 @@ function createReadonlyInput() {
 function createPriceInput(key, value) {
   const input = document.createElement("input");
   input.classList.add("form-control");
-  input.value = key === "할인율" ? `${value}%` : `${value}원`;
+  input.value = value; //  === "할인율" ? `${value}%` : `${value}원`;
   input.addEventListener('input', function () {
     handlePriceInput(input, key);
   });

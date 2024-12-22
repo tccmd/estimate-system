@@ -1,7 +1,7 @@
 // public/js_modules/settings.js
 
 import { estimateData } from "../common/data.js";
-import { showToast } from "../components/toast.js";
+import { showToast } from "../components/Toast.js";
 import createCategory from "./components/Category.js";
 import createEnty1s from "./components/Entry1.js";
 import createIptGroup from "./components/IptGroup.js";
@@ -56,11 +56,11 @@ function settingsModalBody() {
   const settingsSubmitButton = document.getElementById('settings-submit-button');
   settingsSubmitButton.addEventListener('click', () => {
     updateServerData().then((res) => {
-      // console.log(res);
+      console.log("res", res.status)
       if (res.status === 200) {
         // Toast 메시지 표시
         showToast({
-          message2: "저장되었습니다.",
+          message2: "저장되었습니다. 곧 새로고침 됩니다.",
         });
 
         // Bootstrap 모달 닫기
@@ -71,7 +71,9 @@ function settingsModalBody() {
           modalInstance.hide(); // 모달 닫기
         }
       }
+      setTimeout(() => {
+        window.location.reload();
+      }, 2000);
     });
-    window.location.reload();
   });
 }

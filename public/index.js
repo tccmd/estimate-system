@@ -5,8 +5,9 @@ import dataInit, { estimateData } from "./js_modules/common/data.js";
 import settingsInit from "./js_modules/settings/settings.js";
 import menuInit from "./js_modules/components/Menu.js";
 import createMainAccordion from "./js_modules/components/accordion/MainAccordion.js";
-import createToast from "./js_modules/components/toast.js";
 import selectRequiredOptionsOnce from "./js_modules/components/accordion/selectRequiredOptionsOnce.js";
+import createToast from "./js_modules/components/Toast.js";
+import screenshot from "./js_modules/screenShot/screenShot.js";
 
 // 페이지 로드 시 데이터 함수, 초기화 함수 호출
 window.onload = function () {

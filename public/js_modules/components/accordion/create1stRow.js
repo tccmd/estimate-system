@@ -12,8 +12,8 @@ export default function create1stRow(entry2, value2) {
 
   var options = Object.keys(value2);
 
-  // "required" 값 제거
-  options = options.filter(option => option !== "required");
+  // "필수 카테고리 여부" 값 제거
+  options = options.filter(option => option !== "필수 카테고리 여부");
 
   var optgroup = document.createElement("optgroup");
   optgroup.label = entry2;

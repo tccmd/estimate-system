@@ -1,6 +1,6 @@
 import { estimateDatainit } from "../../common/data.js";
 import { addButtonSVG } from "../../components/SVGs.js";
-import { showToast } from "../../components/toast.js";
+import { showToast } from "../../components/Toast.js";
 import { modalBody } from "../settings.js";
 import createButton from "./Btn.js";
 import createCategory from "./Category.js";

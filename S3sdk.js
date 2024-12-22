@@ -35,10 +35,10 @@ export async function downloadJsonData() {
 
 export async function uploadJsonData(data) {
   // 디버깅 로그 - 환경변수
-  console.log('AWS_REGION:', process.env.AWS_REGION);
-  console.log('AWS_ACCESS_KEY_ID:', process.env.AWS_ACCESS_KEY_ID);
-  console.log('AWS_SECRET_ACCESS_KEY:', process.env.AWS_SECRET_ACCESS_KEY);
-  console.log('S3 Bucket Name:', process.env.AWS_S3_BUCKET_NAME);
+  // console.log('AWS_REGION:', process.env.AWS_REGION);
+  // console.log('AWS_ACCESS_KEY_ID:', process.env.AWS_ACCESS_KEY_ID);
+  // console.log('AWS_SECRET_ACCESS_KEY:', process.env.AWS_SECRET_ACCESS_KEY);
+  // console.log('S3 Bucket Name:', process.env.AWS_S3_BUCKET_NAME);
 
   // 받은 JSON 데이터를 문자열로 변환 (필수)
   const fileContent = JSON.stringify(data);

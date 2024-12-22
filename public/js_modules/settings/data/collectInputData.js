@@ -38,7 +38,9 @@ export default function collectInputData() {
           value = switchInput.checked;
           if (switchInput.type === "text") {
             // console.log(`${key}: ${switchInput}, ${switchInput.value}`)
-            value = switchInput.value;
+            const valueArray = switchInput.value.split(',').map(item => item.trim());
+            //console.log(valueArray);
+            value = valueArray;
           }
         } else {
           value = inputs[1].placeholder;

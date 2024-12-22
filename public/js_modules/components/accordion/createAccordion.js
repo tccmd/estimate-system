@@ -21,7 +21,7 @@ export default function createAccordion(entry2, value2) {
   button.setAttribute("aria-controls", "panelsStayOpen-collapse" + entry2);
 
   if (value2) {
-    button.innerText = value2.required === true ? entry2 + " (필수 사항)" : entry2;
+    button.innerText = value2["필수 카테고리 여부"] === true ? entry2 + " (필수 사항)" : entry2;
   } else {
     button.innerText = entry2;
   }
